@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "L07-MatricesYTableros",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "MatricesYTableros::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MatricesYTableros-Debug-f7176a49994fc32faa0f.json",
+					"name" : "MatricesYTableros",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/ezequielpc/Desktop/Ciencias de la computacion/Primer A\u00f1o/Algoritmos y Estructuras de Datos I/Matrices-y-Tableros/Matrices-Tableros/cmake-build-debug",
+		"source" : "/Users/ezequielpc/Desktop/Ciencias de la computacion/Primer A\u00f1o/Algoritmos y Estructuras de Datos I/Matrices-y-Tableros/Matrices-Tableros"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

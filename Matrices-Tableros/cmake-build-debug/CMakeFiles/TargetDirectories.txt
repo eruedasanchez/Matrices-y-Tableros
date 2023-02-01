@@ -1,0 +1,3 @@
+/Users/ezequielpc/Desktop/Ciencias de la computacion/Primer Año/Algoritmos y Estructuras de Datos I/Matrices-y-Tableros/Matrices-Tableros/cmake-build-debug/CMakeFiles/MatricesYTableros.dir
+/Users/ezequielpc/Desktop/Ciencias de la computacion/Primer Año/Algoritmos y Estructuras de Datos I/Matrices-y-Tableros/Matrices-Tableros/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ezequielpc/Desktop/Ciencias de la computacion/Primer Año/Algoritmos y Estructuras de Datos I/Matrices-y-Tableros/Matrices-Tableros/cmake-build-debug/CMakeFiles/rebuild_cache.dir

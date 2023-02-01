@@ -1,0 +1,6 @@
+# ninja log v5
+5	2346	1675207053079123838	CMakeFiles/MatricesYTableros.dir/src/solucion.cpp.o	39ca72aa7dcde99a
+1	2381	1675207053119763683	CMakeFiles/MatricesYTableros.dir/main.cpp.o	ac016fbd8726d398
+6	2644	1675207053385657805	CMakeFiles/MatricesYTableros.dir/lib/gtest-1.8.1/gtest_main.cc.o	aacf6ee8fb717bfc
+6	5616	1675207056350302879	CMakeFiles/MatricesYTableros.dir/lib/gtest-1.8.1/gtest-all.cc.o	8c2a3431c27b975b
+14	1043	1675207129710399717	CMakeFiles/MatricesYTableros.dir/main.cpp.o	ac016fbd8726d398
