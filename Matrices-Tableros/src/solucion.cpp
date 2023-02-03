@@ -255,6 +255,263 @@ tuple<tuple<int, int>, vector<tuple<int, int, int>>> aTriplas(vector<vector<int>
     return resultado;
 }
 
+/* Ejercicio 6.b */
+
+vector<int> triplasAVector(vector<tuple<int, int, int>> m){
+    vector<int> vec;
+    for(int t = 0; t < m.size(); t++){
+        tuple<int, int, int> triplaActual = m[t];
+        int elem1 = get<0>(triplaActual);
+        int elem2 = get<1>(triplaActual);
+        int elem3 = get<2>(triplaActual); 
+        vec.push_back(elem1);    
+        vec.push_back(elem2);
+        vec.push_back(elem3);
+    }
+    return vec;
+}
+
+vector <vector<int > > aMatriz(vector<tuple<int, int, int>> m, tuple<int, int> dim){
+    int filasMatriz = get<0>(dim);
+    int columnasMatriz = get<1>(dim);
+    vector<int> v = triplasAVector(m);
+    int indice = 0;
+    vector<vector<int> > matriz;
+    
+    for(int fila = 0; fila < filasMatriz; fila++){
+        vector<int> filaActual;
+        for(int columna = 0; columna < columnasMatriz; columna++){
+            filaActual.push_back(v[indice]);
+            indice++;
+        }
+        matriz.push_back(filaActual);
+    }
+    return matriz;
+}
+
+void transponerDispersa(vector<tuple<int, int, int>>& m){
+    for(int i = 0; i < m.size(); i++){
+        // int tmp = get<0>(m[i]);
+        // (m[i])  = get<1>(m[i]);
+        // (m[i]).snd() = tmp;
+    }
+}
+
+/* Ejercicios opcionales */
+
+/* Ejercicio 7 */
+
+/* Ejercicio 8.a */
+
+void elevar(vector<vector<int>> &terreno, int x){
+    for(int fila = 0; fila < terreno.size(); fila++){
+        for(int columna = 0; columna < (terreno[fila]).size(); columna++){
+            terreno[fila][columna] = terreno[fila][columna] + x; 
+        }
+    }
+}
+
+/* Ejercicio 8.a */
+
+bool sobresalen(vector<vector<int>> terreno, int n, int &mts){
+
+}
+
+/* Ejercicio 8.c */
+
+int contarCeldasSubacuaticas(vector<vector<int>> m, int f, int c){
+    int celdaSubacuaticas = 0;
+
+    if(f == 0){
+        /* Caso 1. Primer fila de la matriz */
+        if(c == 0){
+            /* Caso 1.a. Primer fila y primer columna */
+            for(int fila = f; fila <= f+1 ; fila++){
+                for(int columna = c; columna <= c+1; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        } else if(c == m.size()-1){
+            /* Caso 1.b Primer fila y ultima columna */
+            for(int fila = f; fila <= f+1 ; fila++){
+                for(int columna = c-1; columna <= c; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        } else {
+            /* Caso 1.c Primer fila y columnas del "medio" */
+            for(int fila = f; fila <= f+1 ; fila++){
+                for(int columna = c-1; columna <= c+1; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        }
+    } else if(f == m.size()-1){
+        /* Caso 2 Ultima fila de la matriz */
+        if(c == 0){ 
+            /* Caso 2.a Ultima fila y primer columna */
+            for(int fila = f-1; fila <= f ; fila++){
+                for(int columna = c; columna <= c+1; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        } else if(c == m.size() - 1){
+            /* Caso 2.b Ultima fila y ultima columna */
+            for(int fila = f-1; fila <= f ; fila++){
+                for(int columna = c-1; columna <= c; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        } else {
+            /* Caso 2.c Ultima fila y columnas del "medio" */
+            for(int fila = f-1; fila <= f ; fila++){
+                for(int columna = c-1; columna <= c+1; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+        }
+    /* Casos de filas del medio */
+    } else if(c == 0){
+        /* Caso 3.a Cualquier fila del medio y primera columna */
+        for(int fila = f-1; fila+1 <= f ; fila++){
+                for(int columna = c; columna <= c+1; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+    } else if (c == m.size()-1){
+        /* Caso 3.b Cualquier fila del medio y ultima columna */
+        for(int fila = f-1; fila+1 <= f ; fila++){
+                for(int columna = c-1; columna <= c; columna++){
+                    if(m[fila][columna] < 0){
+                        celdaSubacuaticas++;
+                    }
+                }
+            }
+    } else {
+        /* Caso 4 Cualquier otro valor que no se encuentra en los bordes de la matriz */
+        for(int fila = f-1; fila <= f+1 ; fila++){
+            for(int columna = c-1; columna <= c+1; columna++){
+                if(m[fila][columna] < 0){
+                    celdaSubacuaticas++;
+                }
+            }
+        }
+    }
+    return celdaSubacuaticas;
+}
+
+int cantCeldasVecinas(vector<vector<int>> t, int f, int c){
+    if(f == 0 || f == t.size() - 1){
+        if(c == 0 || c == t[f].size() - 1){
+            return 2;
+        }
+    } else if(c == 0 || c == t[f].size() -1){
+        return 3;
+
+    } else {
+        return 4;
+    }
+}
+
+int islas(vector<vector<int>> terreno){
+    int cantIslas = 0;
+
+    for(int fila = 0; fila < terreno.size(); fila++){
+        for(int columna = 0; columna < terreno[fila].size(); columna++){
+            int celdasSubacuaticas = contarCeldasSubacuaticas(terreno, fila, columna);
+            if(celdasSubacuaticas == cantCeldasVecinas(terreno, fila, columna)){
+                cantIslas++;
+            }
+        }
+    }
+    return cantIslas;
+}
+
+/* Ejemplo de matriz para la resolucion del ejercicio 
+
+1235
+4565
+7895
+7890
+*/
+
+ /* Ejercicio 9 */
+
+tuple<int, int> buscarValleDesde(vector< vector<int>> m, int fila, int columna){
+    tuple<int, int> coordenadasValle;
+    for(int f = fila; f < m.size(); f++){
+        for(int c = columna; columna < m[f].size(); columna++){
+            if(todosVecinosAdyacentesMenores(m,f,c)){
+                coordenadasValle = make_tuple(f,c); 
+            }
+
+        }
+    }
+    return coordenadasValle;
+}
+
+bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna){
+    bool todosMenores = true;
+    if(fila == 0){
+        if(columna == 0){
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+
+                }
+            }
+        }
+    } 
+
+
+    return todosMenores;
+}
+
+1234
+5678
+9870
+3456
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
