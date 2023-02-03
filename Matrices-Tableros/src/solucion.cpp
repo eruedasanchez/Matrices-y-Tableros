@@ -474,20 +474,77 @@ bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna
                         todosMenores = false;
                         break;
                     }
-
+                }
+            }
+        } else if(columna == m[fila].size() - 1){
+            /* Ultima columna de la matriz */
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+                }
+            }
+        } else {
+            /* Cualquier otra columna */
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
                 }
             }
         }
-    } 
-
-
+    } else if(fila == m.size()-1){
+        /* Casos ultima fila */
+        if(columna == 0){
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+                }
+            }
+        } else if(columna == m[fila].size()-1){
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+                }
+            }
+        } else {
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+                }
+            }
+        }
+    } else {
+        /* Casos cualquier otra fila */
+        for(int i = fila-1; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(m[i][j] < m[fila][columna]){
+                        todosMenores = false;
+                        break;
+                    }
+                }
+            }
+    }
     return todosMenores;
 }
 
-1234
-5678
-9870
-3456
+// 1234
+// 5678
+// 9870
+// 3456
 
 
 
