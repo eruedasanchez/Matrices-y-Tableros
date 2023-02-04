@@ -40,6 +40,9 @@ int islas(vector<vector<int>> terreno);
 tuple<int, int> buscarValleDesde(vector< vector<int>> m, int fila, int columna);
 bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna);
 
+bool reinasEnAmenaza(vector< vector<char>> tablero, tuple<int, int> dimensiones);
+bool estaAmenazada(vector< vector<char>> t, int fila, int columna);
+
 
 
 #endif 
