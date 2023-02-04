@@ -546,6 +546,107 @@ bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna
 // 9870
 // 3456
 
+/* Ejercicio 10 */
+
+/* Ejercicio 11.a */
+
+bool estaAmenazada(vector<vector<char> > t, int fila, int columna){
+    bool hayAmenaza = false;
+
+    if(fila == 0){
+        if(columna == 0){
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        } else if(columna == t[fila].size() - 1){
+            /* Ultima columna de la matriz */
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        } else {
+            /* Cualquier otra columna */
+            for(int i = fila; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        }
+    } else if(fila == t.size()-1){
+        /* Casos ultima fila */
+        if(columna == 0){
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        } else if(columna == t[fila].size()-1){
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        } else {
+            for(int i = fila-1; i <= fila; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+        }
+    } else {
+        /* Casos cualquier otra fila */
+        for(int i = fila-1; i <= fila+1; i++){
+                for(int j = columna-1; j <= columna+1; j++){
+                    if(t[i][j] == 'r'){
+                        hayAmenaza = true;
+                        break;
+                    }
+                }
+            }
+    }
+    return hayAmenaza;
+}
+
+bool reinasEnAmenaza(vector<vector<char> > tablero, tuple<int, int> dimensiones){
+    assert(get<0>(dimensiones) == get<1>(dimensiones));                     // PRE: Tablero cuadrado 
+
+    bool amenazadas = false;
+    int cantFilas = get<0>(dimensiones);
+    int cantColumnas = get<1>(dimensiones);
+
+    for(int fila = 0; fila < cantFilas; fila++){
+        for(int columna = 0; columna < cantColumnas; columna++){
+            if(estaAmenazada(tablero, fila, columna)){
+                amenazadas = true;
+                break;
+            }
+        }
+    }
+    return amenazadas;
+}
+
+
 
 
 
