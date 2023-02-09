@@ -270,6 +270,29 @@ tuple<tuple<int,int>, vector<tuple<int,int,int>>> aTriplas(vector<vector<int>> m
 
 /* Ejercicio 6.b */
 
+int encontrarMinPosicion(vector<tuple<int,int,int>> &vt, int desde, int hasta){
+    int min = desde;
+    for(int i = desde+1; i < hasta; i++){
+        if(get<1>(vt[i]) < get<1>(vt[min])){
+            min = i;
+        }
+    }
+    return min;
+}
+
+void intercambiar(vector<tuple<int,int,int>> &vt, int indice, int minimo){
+    tuple<int,int,int> tmp = vt[indice];
+    vt[indice] = vt[minimo];
+    vt[minimo] = tmp;
+}
+
+void ordenarPorColumna(vector<tuple<int,int,int>> &vt){
+    for(int i = 0; i < vt.size(); i++){
+        int minPos = encontrarMinPosicion(vt, i, vt.size());
+        intercambiar(vt, i, minPos);
+    }
+}
+
 vector<vector<int>> aMatriz(vector<tuple<int,int,int>> m, tuple<int,int> dim){
     vector<vector<int>> matriz;
     int filasMatriz = get<0>(dim);
@@ -290,7 +313,7 @@ vector<vector<int>> aMatriz(vector<tuple<int,int,int>> m, tuple<int,int> dim){
 
     /* Ahora, se ordena cada fila de acuerdo a la columna */
     for(int k = 0; k < filasDeLaMatriz.size(); k++){
-        // ordenarPorColumna(filasDeLaMatriz[k]);
+        ordenarPorColumna(filasDeLaMatriz[k]);
     }
 
     /* Finalmente, se colocan las filas ordenadas en la matriz */
@@ -305,12 +328,44 @@ vector<vector<int>> aMatriz(vector<tuple<int,int,int>> m, tuple<int,int> dim){
     return matriz;
 }
 
-void transponerDispersa(vector<tuple<int, int, int>>& m){
-    for(int i = 0; i < m.size(); i++){
-        // int tmp = get<0>(m[i]);
-        // (m[i])  = get<1>(m[i]);
-        // (m[i]).snd() = tmp;
+/* Ejercicio 6.c */
+
+int buscarMaxValorFila(vector<tuple<int,int,int>> m){
+    int indiceMaxFila = 0;
+    for(int i = 1; i < m.size(); i++){
+        int valorFilaActual = get<0>(m[i]);
+        if(valorFilaActual > get<0>(m[indiceMaxFila])){
+            indiceMaxFila = i;
+        }
     }
+    int valorMaxFila = get<0>(m[indiceMaxFila]);
+    return valorMaxFila;
+}
+
+int buscarMaxValorColumna(vector<tuple<int,int,int>> m){
+    int indiceMaxColumna = 0;
+    for(int i = 1; i < m.size(); i++){
+        int valorColumnaActual = get<1>(m[i]);
+        if(valorColumnaActual > get<1>(m[indiceMaxColumna])){
+            indiceMaxColumna = i;
+        }
+    }
+    int valorMaxColumna = get<1>(m[indiceMaxColumna]);
+    return valorMaxColumna;
+}
+
+vector<vector<int>> transponerDispersa(vector<tuple<int,int,int>> m){
+    int cantFilas = buscarMaxValorFila(m);
+    int cantColumnas = buscarMaxValorColumna(m);
+    tuple<int,int> dimensiones = make_tuple(cantFilas,cantColumnas);
+
+    /* Armo la matriz como un vector de vector de enteros */
+    vector<vector<int>> matriz = aMatriz(m,dimensiones);
+
+    /* Finalmente, se traspone la matriz */
+    vector<vector<int>> matrizTraspuesta = trasponer(matriz);
+    return matrizTraspuesta;
+
 }
 
 /* Ejercicios opcionales */
