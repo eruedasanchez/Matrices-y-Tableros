@@ -35,10 +35,18 @@ bool esPico(vector <vector <int > > m, int f, int c);
 tuple<tuple<int,int>, vector<tuple<int,int,int>>> aTriplas(vector<vector<int>> m);
 
 /* Ejercicio 6.b */
+int encontrarMinPosicion(vector<tuple<int,int,int>> &vt, int desde, int hasta);
+void intercambiar(vector<tuple<int,int,int>> &vt, int indice, int minimo);
+void ordenarPorColumna(vector<tuple<int,int,int>> &vt);
 vector <vector<int>> aMatriz(vector<tuple<int,int,int>> m, tuple<int,int> dim);
 
+
 /* Ejercicio 6.c */
-void transponerDispersa(vector<tuple<int, int, int>>& m);
+int buscarMaxValorFila(vector<tuple<int,int,int>> m);
+int buscarMaxValorColumna(vector<tuple<int,int,int>> m);
+vector<vector<int>> transponerDispersa(vector<tuple<int,int,int>> m);
+
+/* Ejercicio 7 */
 
 void elevar(vector<vector<int>> &terreno, int x);
 
