@@ -1,4 +1,3 @@
-
 #ifndef L07_MATRICESYTABLEROS_H
 #define L07_MATRICESYTABLEROS_H
 
@@ -25,10 +24,41 @@ vector<vector<int>> productoConTraspuesta(vector<vector<int>> A);
 vector<int> transformarEnVector(vector<vector<int>> m);
 vector<vector<int>> redimensionar(vector<vector<int>> m, int filas, int columnas);
 
+/* Ejercicio 4 */
+vector<vector<int>> trasponer(vector<vector<int>> &m);
+
+/* Ejercicio 5 */
+int contarPicos(vector <vector <int > > m);
+bool esPico(vector <vector <int > > m, int f, int c);
+
+/* Ejercicio 6.a */
+tuple<tuple<int,int>, vector<tuple<int,int,int>>> aTriplas(vector<vector<int>> m);
+
+/* Ejercicio 6.b */
+vector <vector<int>> aMatriz(vector<tuple<int,int,int>> m, tuple<int,int> dim);
+
+/* Ejercicio 6.c */
+void transponerDispersa(vector<tuple<int, int, int>>& m);
+
+void elevar(vector<vector<int>> &terreno, int x);
+
+bool sobresalen(vector<vector<int>> terreno, int n, int &mts);
+
+int contarCeldasSubacuaticas(vector<vector<int>> m, int f, int c);
+int cantCeldasVecinas(vector<vector<int>> t, int f, int c);
+int islas(vector<vector<int>> terreno);
+
+tuple<int, int> buscarValleDesde(vector< vector<int>> m, int fila, int columna);
+bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna);
+
+bool reinasEnAmenaza(vector< vector<char>> tablero, tuple<int, int> dimensiones);
+bool estaAmenazada(vector< vector<char>> t, int fila, int columna);
 
 
 
-#endif
+
+
+#endif 
 
 //L07_MATRICESYTABLEROS_H
 
