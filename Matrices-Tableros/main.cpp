@@ -113,6 +113,77 @@ int main(int argc, char **argv) {
     mostrarMatriz(res);
     */
 
+    /* Ejercicio 4 */
+
+    /* vector<vector<int>> m;
+    vector<int> v1;
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(3);
+    m.push_back(v1);
+
+    vector<int> v2;
+    v2.push_back(4);
+    v2.push_back(5);
+    v2.push_back(6);
+    m.push_back(v2);
+
+    cout << "La matriz original es " << endl;
+    mostrarMatriz(m);
+    cout << " " << endl;
+    vector<vector<int>> res = trasponer(m);
+    cout << "La matriz traspuesta es " << endl;
+    mostrarMatriz(res);
+    */
+
+    /* Ejercicio 6.a */
+
+    /*
+    vector<vector<int>> m;
+    vector<int> v1;
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(0);
+    m.push_back(v1);
+
+    vector<int> v2;
+    v2.push_back(0);
+    v2.push_back(0);
+    v2.push_back(6);
+    m.push_back(v2);
+
+    cout << "La matriz original es " << endl;
+    mostrarMatriz(m);
+    cout << " " << endl;
+    tuple<tuple<int,int>, vector<tuple<int,int,int>>> res = aTriplas(m);
+    */
+
+    /* Ejercicio 8.a */
+
+    /*
+    vector<vector<int>> m;
+    vector<int> v1;
+    v1.push_back(1);
+    v1.push_back(2);
+    v1.push_back(0);
+    m.push_back(v1);
+
+    vector<int> v2;
+    v2.push_back(4);
+    v2.push_back(7);
+    v2.push_back(6);
+    m.push_back(v2);
+
+    cout << "La matriz original es " << endl;
+    mostrarMatriz(m);
+    cout << " " << endl;
+
+    cout << "La matriz elevada es " << endl;
+    elevar(m,-2);
+    mostrarMatriz(m);
+    */
+
+
 
     return 0;
 }
