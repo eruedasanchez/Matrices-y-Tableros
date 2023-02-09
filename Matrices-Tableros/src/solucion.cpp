@@ -382,10 +382,26 @@ void elevar(vector<vector<int>> &terreno, int x){
     }
 }
 
-/* Ejercicio 8.a */
+/* Ejercicio 8.b */
 
-bool sobresalen(vector<vector<int>> terreno, int n, int &mts){
+bool sobresalen(vector<vector<int>> terreno, int n, int mts){
+    bool puedoModificar = false;
+    elevar(terreno, mts);
 
+    /* Una vez elevado el terreno, se chequea si la cantidad de celdas subacuaticas es igual a n */
+    int cantCeldasSubacuaticas = 0;
+    for(int fila = 0; fila < terreno.size(); fila++){
+        for(int columna = 0; columna < terreno[fila].size(); columna++){
+            if(terreno[fila][columna] < 0){
+                cantCeldasSubacuaticas++;
+            }
+        }
+    }
+
+    if(cantCeldasSubacuaticas == n){
+        puedoModificar = true;
+    }
+    return puedoModificar;
 }
 
 /* Ejercicio 8.c */
@@ -486,16 +502,17 @@ int contarCeldasSubacuaticas(vector<vector<int>> m, int f, int c){
 }
 
 int cantCeldasVecinas(vector<vector<int>> t, int f, int c){
+    int celdasVecinas = 0;
     if(f == 0 || f == t.size() - 1){
         if(c == 0 || c == t[f].size() - 1){
-            return 2;
+            celdasVecinas = 2;
         }
     } else if(c == 0 || c == t[f].size() -1){
-        return 3;
-
+        celdasVecinas = 3;
     } else {
-        return 4;
+        celdasVecinas = 4;
     }
+    return celdasVecinas;
 }
 
 int islas(vector<vector<int>> terreno){
@@ -520,7 +537,7 @@ int islas(vector<vector<int>> terreno){
 7890
 */
 
- /* Ejercicio 9 */
+/* Ejercicio 9 */
 
 tuple<int, int> buscarValleDesde(vector< vector<int>> m, int fila, int columna){
     tuple<int, int> coordenadasValle;
@@ -618,6 +635,257 @@ bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna
 // 3456
 
 /* Ejercicio 10 */
+
+bool caracteresValidos(vector<vector<char>> tablero){
+    bool tableroValido = true;
+
+    for(int fila = 0; fila < tablero.size(); fila++){
+        for(int columna = 0; tablero[fila].size(); columna++){
+            if(!((tablero[fila][columna] == 'X') || (tablero[fila][columna] == 'O') || (tablero[fila][columna] == ' '))){
+                tableroValido = false;
+            }
+        }
+    }
+    return tableroValido;
+}
+
+vector<char> armarLineaNorte(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaN;
+    for(int i = fila; i >= 0; i--){
+        lineaN.push_back(tablero[i][columna]);
+    }
+    return lineaN;
+}
+
+vector<char> armarLineaSur(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaS;
+    for(int i = fila; i < 3; i++){
+        lineaS.push_back(tablero[i][columna]);
+    }
+    return lineaS;
+}
+
+vector<char> armarLineaEste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaE;
+    for(int j = columna; j < 3; j++){
+        lineaE.push_back(tablero[fila][j]);
+    }
+    return lineaE;
+}
+
+vector<char> armarLineaOeste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaO;
+    for(int j = columna; j >= 0; j--){
+        lineaO.push_back(tablero[fila][j]);
+    }
+    return lineaO;
+}
+
+vector<char> armarLineaNoreste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaNE;
+    lineaNE.push_back(tablero[fila][columna]);
+    lineaNE.push_back(tablero[1][1]);
+    lineaNE.push_back(tablero[0][2]);
+    return lineaNE;
+}
+
+vector<char> armarLineaNoroeste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaNO;
+    lineaNO.push_back(tablero[fila][columna]);
+    lineaNO.push_back(tablero[1][1]);
+    lineaNO.push_back(tablero[0][0]);
+    return lineaNO;
+}
+
+vector<char> armarLineaSureste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaSE;
+    lineaSE.push_back(tablero[fila][columna]);
+    lineaSE.push_back(tablero[1][1]);
+    lineaSE.push_back(tablero[2][2]);
+    return lineaSE;
+}
+
+vector<char> armarLineaSuroeste(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaSO;
+    lineaSO.push_back(tablero[fila][columna]);
+    lineaSO.push_back(tablero[1][1]);
+    lineaSO.push_back(tablero[2][0]);
+    return lineaSO;
+}
+
+vector<char> armarLineaRecta(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaR;
+    for(int j = columna-1; j < 3; j++){
+        lineaR.push_back(tablero[fila][j]);
+    }
+    return lineaR;
+}
+
+vector<char> armarLineaVertical(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaV;
+    for(int i = fila-1; i < 3; i++){
+        lineaV.push_back(tablero[i][columna]);
+    }
+    return lineaV;
+}
+
+vector<char> armarLineaDiagonalDerecha(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaDD;
+    lineaDD.push_back(tablero[0][0]);
+    lineaDD.push_back(tablero[fila][columna]);
+    lineaDD.push_back(tablero[2][2]);
+
+    return lineaDD;
+}
+
+vector<char> armarLineaDiagonalIzquierda(vector<vector<char>> tablero, int fila, int columna){
+    vector<char> lineaDI;
+    lineaDI.push_back(tablero[0][0]);
+    lineaDI.push_back(tablero[fila][columna]);
+    lineaDI.push_back(tablero[2][0]);
+
+    return lineaDI;
+}
+
+// XOX
+// XXO
+// OXO
+
+bool todosIgualesA(vector<char> palabra, char letra){
+    bool iguales = false;
+    int i = 0;
+    while((i < palabra.size()) && (int(palabra[i]) == int(letra))){
+        /* Mientras los caracteres son iguales no hacemos nada. Solo avanzo el indice i */
+        i++;
+    }
+    /* Se interrumpio el ciclo */
+    if(i == palabra.size()){
+        iguales = true;
+    }
+    return iguales;
+}
+
+bool hayLineaEnCualquierDireccion(vector<vector<char>> t, int f, int c, char caracter){
+    bool hayLinea = false;
+
+    vector<vector<char>> todasLineasPosibles;
+    vector<char> lineaNorte;
+    vector<char> lineaSur;
+    vector<char> lineaEste;
+    vector<char> lineaOeste;
+    vector<char> lineaDiagonalNoreste;
+    vector<char> lineaDiagonalNoroeste;
+    vector<char> lineaDiagonalSureste;
+    vector<char> lineaDiagonalSuroeste;
+    vector<char> lineaRecta;
+    vector<char> lineaVertical;
+    vector<char> lineaDiagonalDerecha;
+    vector<char> lineaDiagonalIzquierda;
+
+    if(f == 0){
+        if(c == 0){
+            // Caso Fila 0, columna 0
+            lineaEste = armarLineaEste(t,f,c);
+            lineaSur = armarLineaSur(t,f,c);
+            lineaDiagonalSureste = armarLineaSureste(t,f,c);
+            todasLineasPosibles.push_back(lineaEste);
+            todasLineasPosibles.push_back(lineaSur);
+            todasLineasPosibles.push_back(lineaDiagonalSureste);
+        } else if(c == 1){
+            // Caso Fila 0, columna 1
+            lineaRecta = armarLineaRecta(t,f,c);
+            lineaSur = armarLineaSur(t,f,c);
+            todasLineasPosibles.push_back(lineaRecta);
+            todasLineasPosibles.push_back(lineaSur);
+        } else {
+            // Caso Fila 0, columna 2
+            lineaOeste = armarLineaOeste(t,f,c);
+            lineaSur = armarLineaSur(t,f,c);
+            lineaDiagonalSuroeste = armarLineaSuroeste(t,f,c);
+            todasLineasPosibles.push_back(lineaOeste);
+            todasLineasPosibles.push_back(lineaSur);
+            todasLineasPosibles.push_back(lineaDiagonalSuroeste);
+        }
+    } else if(f == 1){
+        if(c == 0){
+            // Caso Fila 1, columna 0
+            lineaEste = armarLineaEste(t,f,c);
+            lineaVertical = armarLineaVertical(t,f,c);
+            todasLineasPosibles.push_back(lineaEste);
+            todasLineasPosibles.push_back(lineaVertical);
+        } else if(c == 1){
+            // Caso Fila 1, columna 1
+            lineaRecta = armarLineaRecta(t,f,c);
+            lineaVertical = armarLineaVertical(t,f,c);
+            lineaDiagonalDerecha = armarLineaDiagonalDerecha(t,f,c);
+            lineaDiagonalIzquierda = armarLineaDiagonalDerecha(t,f,c);
+            todasLineasPosibles.push_back(lineaRecta);
+            todasLineasPosibles.push_back(lineaVertical);
+            todasLineasPosibles.push_back(lineaDiagonalDerecha);
+            todasLineasPosibles.push_back(lineaDiagonalIzquierda);
+        } else {
+            // Caso Fila 1, columna 2
+            lineaOeste = armarLineaOeste(t,f,c);
+            lineaVertical = armarLineaVertical(t,f,c);
+            todasLineasPosibles.push_back(lineaOeste);
+            todasLineasPosibles.push_back(lineaVertical);
+        }
+    } else if(c == 0){
+        // Fila 2, columna 0
+        lineaNorte = armarLineaNorte(t,f,c);
+        lineaEste = armarLineaEste(t,f,c);
+        lineaDiagonalNoreste = armarLineaNoreste(t,f,c);
+        todasLineasPosibles.push_back(lineaNorte);
+        todasLineasPosibles.push_back(lineaEste);
+        todasLineasPosibles.push_back(lineaDiagonalNoreste);
+    } else if(c == 1){
+        // Fila 2, columna 1
+        lineaRecta = armarLineaRecta(t,f,c);
+        lineaNorte = armarLineaNorte(t,f,c);
+        todasLineasPosibles.push_back(lineaRecta);
+        todasLineasPosibles.push_back(lineaNorte);
+    } else {
+        // Fila 2, columna 2
+        lineaOeste = armarLineaOeste(t,f,c);
+        lineaNorte = armarLineaNorte(t,f,c);
+        lineaDiagonalNoroeste = armarLineaNoroeste(t,f,c);
+        todasLineasPosibles.push_back(lineaEste);
+        todasLineasPosibles.push_back(lineaNorte);
+        todasLineasPosibles.push_back(lineaDiagonalNoroeste);
+    }
+
+    for(int j = 0; j < todasLineasPosibles.size(); j++){
+        if(todosIgualesA(todasLineasPosibles[j],caracter)){
+            hayLinea = true;
+            break;
+        }
+    }
+    return hayLinea;
+}
+
+string partidaTaTeTi(vector<vector<char>> tablero){
+    string estadoPartida;
+    if(!(tablero.size() == 3 && tablero[0].size() == 3 && tablero[1].size() == 3 && tablero[2].size() == 3 && caracteresValidos(tablero))){
+        // Tablero invalido
+        estadoPartida = "invalido";
+    } else {
+        // Tablero valido
+        estadoPartida = "in progress";
+        /* Se chequea para cada posicion del tablero si tiene 3 celdas con el mismo caracter en cualquier direccion posible */
+        for(int fila = 0; fila < tablero.size(); fila++){
+            for(int columna = 0; columna < tablero[fila].size(); columna++){
+                if(hayLineaEnCualquierDireccion(tablero,fila,columna,tablero[fila][columna])){
+                    if(tablero[fila][columna] == 'X'){
+                        estadoPartida = "cruz";
+                    } else if(tablero[fila][columna] == 'O'){
+                        estadoPartida = "circulo";
+                    }
+                }
+            }
+        }
+    }
+    return estadoPartida;
+}
 
 /* Ejercicio 11.a */
 
