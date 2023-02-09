@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <string.h>
+#include <string>
 #include <assert.h>
 #include <tuple>
 
@@ -48,25 +48,44 @@ vector<vector<int>> transponerDispersa(vector<tuple<int,int,int>> m);
 
 /* Ejercicio 7 */
 
+/* Ejercicio 8.a */
 void elevar(vector<vector<int>> &terreno, int x);
 
-bool sobresalen(vector<vector<int>> terreno, int n, int &mts);
+/* Ejercicio 8.b */
+bool sobresalen(vector<vector<int>> terreno, int n, int mts);
 
+/* Ejercicio 8.c */
 int contarCeldasSubacuaticas(vector<vector<int>> m, int f, int c);
 int cantCeldasVecinas(vector<vector<int>> t, int f, int c);
 int islas(vector<vector<int>> terreno);
 
+/* Ejercicio 9 */
 tuple<int, int> buscarValleDesde(vector< vector<int>> m, int fila, int columna);
 bool todosVecinosAdyacentesMenores(vector< vector<int>> m, int fila, int columna);
 
+/* Ejercicio 10 */
+bool caracteresValidos(vector<vector<char>> tablero);
+vector<char> armarLineaNorte(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaSur(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaEste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaOeste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaNoreste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaNoroeste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaSureste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaSuroeste(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaRecta(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaVertical(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaDiagonalDerecha(vector<vector<char>> tablero, int fila, int columna);
+vector<char> armarLineaDiagonalIzquierda(vector<vector<char>> tablero, int fila, int columna);
+bool todosIgualesA(vector<char> palabra, char letra);
+bool hayLineaEnCualquierDireccion(vector<vector<char>> t, int f, int c, char caracter);
+string partidaTaTeTi(vector<vector<char>> tablero);
+
+/* Ejercicio 11 */
 bool reinasEnAmenaza(vector< vector<char>> tablero, tuple<int, int> dimensiones);
 bool estaAmenazada(vector< vector<char>> t, int fila, int columna);
 
-
-
-
-
-#endif 
+#endif
 
 //L07_MATRICESYTABLEROS_H
 
